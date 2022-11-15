@@ -184,31 +184,4 @@ def test_buffer_file_push(filesystem_complex: FileSystem):
     assert len(buffer.items) == 3
 
 
-def test_exception_path(filesystem_complex: FileSystem):
-    with pytest.raises(AttributeError):
-        filesystem_complex.get_node("./Dir_1/Dir_11/../Dir_22")
-
-
-def test_exception_buffer_max_elements(filesystem: FileSystem):
-    buffer = filesystem.create_buffer(".", "dummy.buf")
-
-    for _ in range(MAX_BUF_FILE_SIZE):
-        buffer.push(1)
-
-    with pytest.raises(AttributeError):
-        buffer.push(1)
-
-
-def test_exception_directory_unique_name(filesystem: FileSystem):
-    filesystem.create_directory(".", "Dummy")
-
-    with pytest.raises(AttributeError):
-        filesystem.create_directory(".", "Dummy")
-
-
-def test_exception_directory_max_elements(filesystem: FileSystem):
-    for i in range(DIR_MAX_ELEMS-1):
-        filesystem.create_directory(".", "Dir__"+str(i))
-
-    with pytest.raises(AttributeError):
         filesystem.create_directory(".", "Dummy")
