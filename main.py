@@ -81,7 +81,7 @@ def binaryfile():
     app_fs = app.config["FILESYSTEM_OBJ"]
 
     if request.method == "GET":
-        # Reading binary file
+        
         path = request.args.get("path")
 
         if not path:
@@ -96,7 +96,7 @@ def binaryfile():
 
 
     elif request.method == "POST":
-        # Creating binary file
+       
         path = request.form.get("path")
         name = request.form.get("name")
         information = request.form.get("information")
@@ -120,7 +120,7 @@ def logtextfile():
     app_fs = app.config["FILESYSTEM_OBJ"]
 
     if request.method == "GET":
-        # Reading log file
+      
         path = request.args.get("path")
 
         if not path:
