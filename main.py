@@ -4,15 +4,15 @@ from python_filesystem.filesystem import BinaryFile, LogFile, BufferFile
 
 fs = FileSystem()
 app = Flask(__name__)
-app.config["FILESYSTEM_OBJ"] = fs
+app.config["FILESYSTEM"] = fs
 
 
 @app.route("/", methods=["GET", "PUT", "DELETE"])
 def index():
-    app_fs = app.config["FILESYSTEM_OBJ"]
+    app_fs = app.config["FILESYSTEM"]
 
     if request.method == "GET":
-        # Getting file information as json
+        
         path = request.args.get("path", '.')
 
         try:
